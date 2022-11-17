@@ -15,7 +15,8 @@ jobs:
           password: ${{secrets.SERVER_PASSWORD}}
           port: ${{secrets.SERVER_PORT}}
           script: |
-            cd ~/web23_MoMyeon/backend
+            cd ~/web23_MoMyeon/frontend
             git pull
-            ls -a
-            ls -a
+            yarn install
+            yarn build
+            yarn start
