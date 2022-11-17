@@ -7,8 +7,14 @@ jobs:
   checkout:
     runs-on: ubuntu-latest
     steps:
-      - run: ls -al
-      ## git pull current branch
-      - uses: actions/checkout@v3
-      - run: ls -al
-      - run: cat .github/workflows/checkout.yml
+      - name: Deploy FastApi MainServer(master)
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{secrets.SERVER_HOST}}
+          username: ${{secrets.SERVER_NAME}}
+          password: ${{secrets.SERVER_PASSWORD}}
+          port: ${{secrets.SERVER_PORT}}
+          script: |
+            cd ~/web23_MoMyeon/backend
+            git pull
+            ls -a
