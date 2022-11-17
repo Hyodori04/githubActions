@@ -17,8 +17,9 @@ jobs:
           script: |
             cd ~/web23_MoMyeon/frontend
             git pull
-            yarn install
-            yarn build
-            yarn start
             touch .env
             echo ${{secrets.ENV_CONTENT}} >> .env
+            yarn install
+            yarn build
+            pm2 delete front-server
+            pm2 --name 'front-server' start yarn -- start
