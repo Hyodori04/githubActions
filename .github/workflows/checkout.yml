@@ -7,7 +7,7 @@ jobs:
   checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy FastApi MainServer(master)
+      - name: Deploy FrontServer
         uses: appleboy/ssh-action@master
         with:
           host: ${{secrets.SERVER_HOST}}
@@ -20,3 +20,5 @@ jobs:
             yarn install
             yarn build
             yarn start
+            touch .env
+            echo ${{secrets.ENV_CONTENT}} >> .env
