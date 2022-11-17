@@ -18,3 +18,4 @@ jobs:
             cd ~/web23_MoMyeon/backend
             git pull
             ls -a
+            ls -a
